@@ -11,6 +11,7 @@
     <meta property="og:description" content="Pakua fomu za kujiunga na angalia matokeo ya mitihani mtandaoni.">
     <meta property="og:image" content="logo.jpg">
     <meta property="og:url" content="https://zepox112.github.io/embarwaysecondaryschool/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Embarway Secondary School | S1159 - Official Website 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.jpg">
@@ -146,6 +147,100 @@
 
         nav ul li a:hover {
             color: var(--accent-green);
+        }
+
+        /* WhatsApp Liquid Glass Style */
+        .whatsapp-liquid-link {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            text-decoration: none;
+        }
+
+        .glass-water-bubble {
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 255, 255, 0.15);
+            /* Transparency ya kioo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+
+            /* Pure Glass Border & Shadow */
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 0 10px rgba(255, 255, 255, 0.2);
+
+            /* Smooth transition */
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Reflection Effect (Mng'ao wa juu kama maji) */
+        .glass-water-bubble::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 15%;
+            width: 70%;
+            height: 30%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+            border-radius: 50%;
+        }
+
+        .glass-water-bubble img {
+            width: 35px;
+            height: 35px;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+        }
+
+        /* Hover Animation - Inacheza kama tone la maji */
+        .whatsapp-liquid-link:hover .glass-water-bubble {
+            transform: scale(1.1) translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, 0.4),
+                inset 0 0 20px rgba(255, 255, 255, 0.3);
+            border-color: #4ade80;
+            /* Inang'aa rangi ya kijani kidogo ukigusa */
+        }
+
+        /* Floating Animation */
+        @keyframes float-liquid {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .whatsapp-liquid-link {
+            animation: float-liquid 3s ease-in-out infinite;
+        }
+
+        /* Kwenye Simu Punguza Ukubwa Kidogo */
+        @media (max-width: 600px) {
+            .glass-water-bubble {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .glass-water-bubble img {
+                width: 28px;
+                height: 28px;
+            }
         }
 
         /* SLIDESHOW HERO SECTION */
@@ -434,6 +529,110 @@
             /* Inang'aa kidogo sana ukibonyeza */
         }
 
+        /* Container ya Liquid */
+        .liquid-box {
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            /* Transparent glass */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 0 15px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            /* Muhimu ili mapovu yasitoke nje */
+            padding: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Input ya Search */
+        #searchInput {
+            width: 100%;
+            padding: 15px 25px;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 1rem;
+            position: relative;
+            z-index: 5;
+            /* Inakaa juu ya mapovu */
+        }
+
+        #searchInput::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Muonekano wa Bubbles */
+        .bubble {
+            position: absolute;
+            bottom: -20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: rise 4s infinite ease-in;
+            z-index: 1;
+        }
+
+        /* Ukubwa na nafasi za mapovu tofauti */
+        .bubble:nth-child(1) {
+            width: 20px;
+            height: 20px;
+            left: 10%;
+            animation-duration: 3s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            left: 40%;
+            animation-duration: 5s;
+            animation-delay: 1s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 15px;
+            height: 15px;
+            left: 70%;
+            animation-duration: 4s;
+            animation-delay: 2s;
+        }
+
+        .bubble:nth-child(4) {
+            width: 8px;
+            height: 8px;
+            left: 85%;
+            animation-duration: 6s;
+        }
+
+        /* Animation ya Mapovu kupanda juu */
+        @keyframes rise {
+            0% {
+                bottom: -20px;
+                transform: translateX(0);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translateX(15px);
+            }
+
+            100% {
+                bottom: 100%;
+                transform: translateX(-15px);
+                opacity: 0;
+            }
+        }
+
+        /* Mng'ao wa maji ukigusa search bar */
+        .liquid-box:hover {
+            border: 1px solid rgba(255, 62, 62, 0.5);
+            box-shadow: 0 0 20px rgba(255, 62, 62, 0.2);
+            transition: 0.4s;
+        }
+
         /* Box la mapendekezo (Suggestions) bado linahitaji background kidogo ili maandishi yasichanganyike */
         .suggestions-box {
             position: absolute;
@@ -550,6 +749,74 @@
             box-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
             transform: translateY(-2px);
         }
+
+        /* Mobile Responsive Fixes */
+        @media screen and (max-width: 768px) {
+
+            /* Punguza ukubwa wa maandishi makubwa ya mwanzo */
+            .hero-content h1 {
+                font-size: 2rem !important;
+            }
+
+            /* Fanya section ziwe na nafasi ndogo pembeni */
+            .section {
+                padding: 50px 5% !important;
+            }
+
+            /* Kadi za About na Mission zikae wima (moja chini ya nyingine) */
+            .horizontal-layout {
+                flex-direction: column !important;
+                gap: 20px;
+            }
+
+            /* Kadi za viongozi na Gallery zijipange mbili-mbili au moja-moja */
+            .bento-grid,
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)) !important;
+            }
+
+            /* Rekebisha ubao wa harambee usitoke nje ya kioo */
+            .digital-board {
+                padding: 20px !important;
+                margin: 10px;
+                width: auto;
+            }
+
+            .glow-text {
+                font-size: 1.5rem !important;
+            }
+
+            /* Rekebisha hadithi (Our Story) isikatike */
+            .story-image {
+                height: 250px !important;
+            }
+
+            .story-card {
+                padding: 20px !important;
+            }
+
+            /* Ficha menu kubwa na uonyeshe menu ya simu (kama unayo) 
+       Au punguza nafasi ya menu */
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li a {
+                font-size: 0.8rem;
+            }
+        }
+
+        body,
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 
@@ -571,13 +838,17 @@
         </ul>
     </nav>
     <div class="search-section">
-        <div class="search-container">
+        <div class="search-container liquid-box">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+
             <input type="text" id="searchInput" placeholder="Tafuta hapa (mfano: matokeo, fomu, ratiba...)"
                 onkeyup="liveSearch()">
             <div id="searchSuggestions" class="suggestions-box"></div>
         </div>
-    </div>
-
+    </div>F
 
     <header id="nyumbani" class="hero">
         <div class="slide active" style="background-image: url('emba1.jpg');"></div>
@@ -585,10 +856,11 @@
         <div class="slide" style="background-image: url('emba3.jpg');"></div>
         <div class="slide" style="background-image: url('emba4.jpg');"></div>
         <div class="slide" style="background-image: url('emba5.jpg');"></div>
+        <div class="slide" style="background-image: url('emba6.jpg');"></div>
 
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Karibu Shule ya Sekondari Embarway</h1>
+            <h1>KARIBU SHULE YA SEKONDARI EMBARWAY</h1>
             <p>Tunakuza Vipaji na Taaluma katika Mazingira ya Asili.</p>
             <br>
             <a href="#usajili" class="btn">Usajili</a>
@@ -778,6 +1050,7 @@
                         <span class="badge">HGL</span> <span class="badge">HGK</span>
                         <span class="badge">HGE</span> <span class="badge">HGLi</span>
                         <span class="badge">CBG</span> <span class="badge">HKL</span>
+                        <span class="badge">HGFa</span>
                     </div>
                 </div>
                 <div class="glass-card">
@@ -986,41 +1259,181 @@
                     </a>
                 </div>
             </div>
+            <div
+                style="text-align: center; margin-top: 30px; padding: 20px; border-top: 1px solid var(--glass-border);">
+                <p style="font-size: 0.9rem; margin-bottom: 15px; color: #ddd;">Ukishasoma maelekezo ya kujiunga,
+                    bonyeza hapa kuanza maombi:</p>
+
+                <a href="apply.html" target="_blank" class="btn-apply-now">
+                    🚀 JIUNGE SASA (APPLY NOW)
+                </a>
+            </div>
+
+            <style>
+                /* Style ya kitufe cha Jiunge Sasa */
+                .btn-apply-now {
+                    background: var(--accent-green);
+                    color: var(--dark-grey) !important;
+                    padding: 18px 40px;
+                    border-radius: 50px;
+                    text-decoration: none;
+                    font-weight: 800;
+                    font-size: 1.1rem;
+                    display: inline-block;
+                    transition: all 0.4s ease;
+                    box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+                    border: 2px solid transparent;
+                }
+
+                .btn-apply-now:hover {
+                    background: transparent;
+                    color: var(--accent-green) !important;
+                    border: 2px solid var(--accent-green);
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 25px rgba(74, 222, 128, 0.5);
+                }
+            </style>
+        </div>
+    </section>
+    <section id="faq-section" style="padding: 60px 5%;">
+        <h2 style="text-align: center; color: #4ade80; font-family: sans-serif; margin-bottom: 30px;">Maswali
+            Yanayoulizwa Mara kwa Mara</h2>
+
+        <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+
+            <div class="faq-card">
+                <div class="faq-header" onclick="toggleFaq(this)">
+                    <span>📍 Shule inapatikana wapi?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-inner">
+                        Embarway Secondary School inapatikana wilayani Ngorongoro, mkoa wa Arusha. Namna ya kufika shule: Shule ya Sekondari Embarway ipo ndani ya Hifadhi ya
+mamlaka ya Ngorongoro umbali wa km. 283 kusini kutoka Makao Makuu ya Wilaya ya
+Ngorongoro (Loliondo). Pia kutokea wilaya ya karatu kutoka Stendi ya Mabasi ya Karatu (Karatu Bus Station) kuelekea Shule ya Sekondari Embarway iliyopo Endulen, Ngorongoro ni takriban kilometa 67.8. Ambapo utapanda magari yanayoelekea embarway na yatakufikisha shule moja kwa moja. Kwa maelezo zaidi, tafadhali wasiliana nasi kupitia namba zetu za simu au barua pepe iliyotolewa kwenye sehemu ya mawasiliano hapo chini.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-header" onclick="toggleFaq(this)">
+                    <span>📚 Je, kuna michepuo gani (Combos)?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-inner">
+                        Kwa kidato cha tano na sita, tunatoa michepuo ya Sayansi (CBG) na Sanaa/Biashara
+                        (HGE, HGL, HGK, HKL, HGFa, HGLi). Kwa kidato cha kwanza hadi cha nne, tunafundisha masomo yote ya msingi ya
+                        kitaifa.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-header" onclick="toggleFaq(this)">
+                    <span>💰 Ada zenu zinalipwaje? (Advanced Level)</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-inner">
+                        Ada zenu ni nafuu na zinaweza kulipwa kwa awamu (kila muhula). Kwa maelezo zaidi ya viwango
+                        vya ada, tafadhali download "Joining Instructions ya kidato cha tano" hapo juu au wasiliana na mhasibu kupitia
+                        namba zetu za simu.
+                    </div>
+                </div>
+            </div>
 
         </div>
     </section>
+
+    <style>
+        /* Hapa ndipo urembo unapotengenezwa */
+        .faq-card {
+            background: rgba(255, 255, 255, 0.05);
+            /* Glass effect */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .faq-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .faq-header:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-inner {
+            padding: 20px;
+            color: #ddd;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .faq-icon {
+            color: #4ade80;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        /* Hii ndio inafungua accordion */
+        .faq-card.active .faq-content {
+            max-height: 300px;
+            /* Inashusha jibu */
+        }
+
+        .faq-card.active .faq-icon {
+            transform: rotate(45deg);
+            /* Alama ya + inageuka kuwa x */
+            color: #ff5f5f;
+        }
+    </style>
+
+    <script>
+        function toggleFaq(element) {
+            const card = element.parentElement;
+
+            // Funga zingine zote zilizokuwa wazi
+            document.querySelectorAll('.faq-card').forEach(c => {
+                if (c !== card) c.classList.remove('active');
+            });
+
+            // Fungua/Funga hii uliyobonyeza
+            card.classList.toggle('active');
+        }
+    </script>
 
 
     <section id="mawasiliano">
         <h2 class="section-title">Mawasiliano</h2>
         <div class="grid-container">
-            <div class="glass-card">
-                <h3>Tuandikie Ujumbe</h3>
-                <form>
-                    <div class="glass-card">
-                        <h3>Tuandikie Ujumbe WhatsApp</h3>
-                        <form id="whatsappForm">
-                            <input type="text" id="senderName" placeholder="Jina Lako" required
-                                style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white;">
 
-                            <textarea id="senderMessage" placeholder="Andika ujumbe wako hapa..." rows="4" required
-                                style="width:100%; padding:12px; border-radius:8px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white;"></textarea>
-
-                            <br><br>
-                            <button type="button" onclick="sendToWhatsApp()" class="btn" style="width: 100%;">
-                                Tuma Ujumbe Direct (WhatsApp)
-                            </button>
-                        </form>
-                    </div>
-                </form>
-            </div>
             <div class="glass-card">
                 <h3>Ofisi Yetu</h3>
                 <p>📍 TANZANIA, ARUSHA,NGORONGORO</p>
                 <p>📞 +255 755 990 912 MKUU WA SHULE</p>
                 <p>📞 +255 754 088 341 MAKAMU MKUU WA SHULE</p>
-                <p>📞 +255 755 702 037 MWL WA MALEZI</p>
-                <p>✉️ info@embarwaysec.ac.tz</p>
+                <p>📞 +255 755 702 037 OFISI YA MALEZI</p>
+                <p>📞 +255 783 243 745 MUHASIBU WA SHULE</p>
+                
                 <br>
                 <div
                     style="height: 200px; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
@@ -1119,7 +1532,11 @@
             }
         });
     </script>
-
+    <a href="https://wa.me/255754088341" class="whatsapp-liquid-link" target="_blank">
+        <div class="glass-water-bubble">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </div>
+    </a>
 </body>
 
 </html>

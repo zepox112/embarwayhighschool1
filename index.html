@@ -26,6 +26,79 @@
             --accent-green: #4ade80;
         }
 
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                /* Inaweka logo juu, menu chini */
+                padding: 10px;
+            }
+
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                /* Inafanya menu zishuke mstari wa pili zikikosa nafasi */
+                justify-content: center;
+                gap: 8px;
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin: 0;
+            }
+
+            nav ul li a {
+                font-size: 13px;
+                /* Punguza maandishi kidogo kwenye simu */
+            }
+
+            .logo span {
+                font-size: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+
+            /* Inafanya kadi zijipange moja moja kwenda chini */
+            .grid-container,
+            .welcome-section,
+            .grid {
+                display: block !important;
+                padding: 10px;
+            }
+
+            .glass-card,
+            .box,
+            .sub-card {
+                width: 100% !important;
+                margin-bottom: 20px;
+                min-width: 0 !important;
+            }
+
+            /* Punguza ukubwa wa maandishi ya kichwa (H1) */
+            .hero h1 {
+                font-size: 1.8rem !important;
+            }
+
+            /* Rekebisha picha ya mkuu wa shule isichukue nafasi kubwa */
+            .headmaster-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .headmaster-img {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+
+            /* Inazuia kioo kucheza kushoto na kulia (Horizontal Scroll) */
+            body,
+            html {
+                overflow-x: hidden;
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -1308,9 +1381,14 @@
                 </div>
                 <div class="faq-content">
                     <div class="faq-inner">
-                        Embarway Secondary School inapatikana wilayani Ngorongoro, mkoa wa Arusha. Namna ya kufika shule: Shule ya Sekondari Embarway ipo ndani ya Hifadhi ya
-mamlaka ya Ngorongoro umbali wa km. 283 kusini kutoka Makao Makuu ya Wilaya ya
-Ngorongoro (Loliondo). Pia kutokea wilaya ya karatu kutoka Stendi ya Mabasi ya Karatu (Karatu Bus Station) kuelekea Shule ya Sekondari Embarway iliyopo Endulen, Ngorongoro ni takriban kilometa 67.8. Ambapo utapanda magari yanayoelekea embarway na yatakufikisha shule moja kwa moja. Kwa maelezo zaidi, tafadhali wasiliana nasi kupitia namba zetu za simu au barua pepe iliyotolewa kwenye sehemu ya mawasiliano hapo chini.
+                        Embarway Secondary School inapatikana wilayani Ngorongoro, mkoa wa Arusha. Namna ya kufika
+                        shule: Shule ya Sekondari Embarway ipo ndani ya Hifadhi ya
+                        mamlaka ya Ngorongoro umbali wa km. 283 kusini kutoka Makao Makuu ya Wilaya ya
+                        Ngorongoro (Loliondo). Pia kutokea wilaya ya karatu kutoka Stendi ya Mabasi ya Karatu (Karatu
+                        Bus Station) kuelekea Shule ya Sekondari Embarway iliyopo Endulen, Ngorongoro ni takriban
+                        kilometa 67.8. Ambapo utapanda magari yanayoelekea embarway na yatakufikisha shule moja kwa
+                        moja. Kwa maelezo zaidi, tafadhali wasiliana nasi kupitia namba zetu za simu au barua pepe
+                        iliyotolewa kwenye sehemu ya mawasiliano hapo chini.
                     </div>
                 </div>
             </div>
@@ -1323,7 +1401,8 @@ Ngorongoro (Loliondo). Pia kutokea wilaya ya karatu kutoka Stendi ya Mabasi ya K
                 <div class="faq-content">
                     <div class="faq-inner">
                         Kwa kidato cha tano na sita, tunatoa michepuo ya Sayansi (CBG) na Sanaa/Biashara
-                        (HGE, HGL, HGK, HKL, HGFa, HGLi). Kwa kidato cha kwanza hadi cha nne, tunafundisha masomo yote ya msingi ya
+                        (HGE, HGL, HGK, HKL, HGFa, HGLi). Kwa kidato cha kwanza hadi cha nne, tunafundisha masomo yote
+                        ya msingi ya
                         kitaifa.
                     </div>
                 </div>
@@ -1337,7 +1416,8 @@ Ngorongoro (Loliondo). Pia kutokea wilaya ya karatu kutoka Stendi ya Mabasi ya K
                 <div class="faq-content">
                     <div class="faq-inner">
                         Ada zenu ni nafuu na zinaweza kulipwa kwa awamu (kila muhula). Kwa maelezo zaidi ya viwango
-                        vya ada, tafadhali download "Joining Instructions ya kidato cha tano" hapo juu au wasiliana na mhasibu kupitia
+                        vya ada, tafadhali download "Joining Instructions ya kidato cha tano" hapo juu au wasiliana na
+                        mhasibu kupitia
                         namba zetu za simu.
                     </div>
                 </div>
@@ -1433,7 +1513,7 @@ Ngorongoro (Loliondo). Pia kutokea wilaya ya karatu kutoka Stendi ya Mabasi ya K
                 <p>📞 +255 754 088 341 MAKAMU MKUU WA SHULE</p>
                 <p>📞 +255 755 702 037 OFISI YA MALEZI</p>
                 <p>📞 +255 783 243 745 MUHASIBU WA SHULE</p>
-                
+
                 <br>
                 <div
                     style="height: 200px; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center;">

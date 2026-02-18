@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200">
+    <meta name="viewport" content="width=1100">
     <meta name="description"
         content="Tovuti rasmi ya Embarway Secondary School (S1159). Pakua fomu za kujiunga 2026, angalia matokeo ya NECTA.">
     <title>Embarway Secondary School | S1159 - Official Website 2026</title>
@@ -21,52 +21,41 @@
             --accent-green: #4ade80;
         }
 
-        /* Lazimisha Mpangilio wa PC Kwenye Simu */
-        * {
-            /* Zuia browser isijaribu kurekebisha ukubwa wa maandishi yenyewe */
-            -webkit-text-size-adjust: none;
-            text-size-adjust: none;
-        }
-
-        /* Hakikisha container za grid hazivunji mistari (No wrapping) */
-        .grid-container,
-        .welcome-section,
-        .quick-links {
+        /* Hii inahakikisha kadi za "Neno la Mwezi" na "Mkuu wa Shule" hazishuki chini */
+        .welcome-section {
             display: flex !important;
             flex-direction: row !important;
-            /* Inakaa mstari mmoja pembeni daima */
+            /* Lazimisha kukaa pembeni */
             flex-wrap: nowrap !important;
-            /* Inazuia vitu visishuke chini */
-            overflow-x: auto;
-            /* Kama ni virefu sana, mtumiaji anaweza kusogeza pembeni kidogo */
-            justify-content: flex-start !important;
+            /* Zuia vitu visivunjike kwenda chini */
+            gap: 20px;
+            width: 100%;
         }
 
-        .box,
+        /* Hii inahakikisha kadi za historia na dira zinabaki mstari mmoja */
+        .grid-container {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            gap: 20px;
+        }
+
         .glass-card {
-            min-width: 350px !important;
-            /* Inalazimisha kila box libaki na size yake ya PC */
-            flex: 0 0 auto !important;
+            min-width: 350px;
+            /* Inahakikisha kadi hazibanwi sana */
+            flex: 1;
         }
 
-        /* Menu ya juu ibaki mstari mmoja kama PC */
         nav ul {
             display: flex !important;
+            /* Inahakikisha menu haipotei */
             flex-direction: row !important;
-            gap: 20px !important;
+            gap: 15px;
         }
 
-        /* Zuia picha na maandishi ya Hero yasijirekebishe kwa udogo wa simu */
-        .hero h1 {
-            font-size: 3.5rem !important;
-            white-space: nowrap;
-            /* Inazuia kichwa cha habari kisishuke chini */
-        }
-
-        /* Hii itazuia kadi za matokeo zisishuke chini */
-        div[style*="display: flex"] {
-            flex-direction: row !important;
-            flex-wrap: nowrap !important;
+        @media screen and (max-width: 768px) {
+            /* Futa au komenti (disable) amri zote zilizomo hapa awali */
+            /* Hii itazuia simu isibadilishe mpangilio wa menu */
         }
 
         /* RESET & BASE */

@@ -11,7 +11,7 @@
     <meta property="og:description" content="Pakua fomu za kujiunga na angalia matokeo ya mitihani mtandaoni.">
     <meta property="og:image" content="logo.jpg">
     <meta property="og:url" content="https://zepox112.github.io/embarwaysecondaryschool/">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1200">
     <title>Embarway Secondary School | S1159 - Official Website 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.jpg">
@@ -24,6 +24,54 @@
             --glass-border: rgba(255, 255, 255, 0.2);
             --text-light: #f4f4f4;
             --accent-green: #4ade80;
+        }
+
+        /* Lazimisha Mpangilio wa PC Kwenye Simu */
+        * {
+            /* Zuia browser isijaribu kurekebisha ukubwa wa maandishi yenyewe */
+            -webkit-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+
+        /* Hakikisha container za grid hazivunji mistari (No wrapping) */
+        .grid-container,
+        .welcome-section,
+        .quick-links {
+            display: flex !important;
+            flex-direction: row !important;
+            /* Inakaa mstari mmoja pembeni daima */
+            flex-wrap: nowrap !important;
+            /* Inazuia vitu visishuke chini */
+            overflow-x: auto;
+            /* Kama ni virefu sana, mtumiaji anaweza kusogeza pembeni kidogo */
+            justify-content: flex-start !important;
+        }
+
+        .box,
+        .glass-card {
+            min-width: 350px !important;
+            /* Inalazimisha kila box libaki na size yake ya PC */
+            flex: 0 0 auto !important;
+        }
+
+        /* Menu ya juu ibaki mstari mmoja kama PC */
+        nav ul {
+            display: flex !important;
+            flex-direction: row !important;
+            gap: 20px !important;
+        }
+
+        /* Zuia picha na maandishi ya Hero yasijirekebishe kwa udogo wa simu */
+        .hero h1 {
+            font-size: 3.5rem !important;
+            white-space: nowrap;
+            /* Inazuia kichwa cha habari kisishuke chini */
+        }
+
+        /* Hii itazuia kadi za matokeo zisishuke chini */
+        div[style*="display: flex"] {
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
         }
 
         * {
@@ -47,87 +95,6 @@
             font-weight: bold;
             font-size: 1.2rem;
             color: white;
-        }
-
-        /* MAREKEBISHO KWA AJILI YA SIMU (PORTRAIT) */
-        @media screen and (max-width: 480px) {
-
-            /* 1. Punguza ukubwa wa maandishi yote kwa ujumla ili yasijae sana */
-            html {
-                font-size: 14px;
-            }
-
-            /* 2. Rekebisha Heading kubwa isikatike */
-            .hero h1 {
-                font-size: 1.5rem !important;
-                /* Inapunguza size ya kichwa cha habari */
-                line-height: 1.2;
-                padding: 0 10px;
-            }
-
-            /* 3. Hakikisha kadi (glass-card) hazitoki nje ya kioo */
-            .glass-card {
-                padding: 15px !important;
-                margin: 10px 0 !important;
-                width: 100% !important;
-                border-radius: 15px;
-            }
-
-            /* 4. Rekebisha Grid ya Matokeo (Internal Results) */
-            /* Badala ya kukaa 2x2, zikae moja moja au mbili ndogo */
-            div[style*="grid-template-columns: 1fr 1fr"] {
-                grid-template-columns: 1fr 1fr !important;
-                gap: 5px !important;
-            }
-
-            .btn-internal {
-                font-size: 0.7rem !important;
-                padding: 8px 4px !important;
-            }
-
-            /* 5. Rekebisha Navigation (Menu) */
-            /* Kwa sababu menu yako ni ndefu, ipe uwezo wa kusogeza (scroll) kama bado hujaweka Hamburger Menu */
-            nav ul {
-                display: flex !important;
-                overflow-x: auto;
-                white-space: nowrap;
-                padding: 10px 0;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            nav ul li {
-                margin-left: 15px;
-            }
-
-            /* 6. Punguza picha ya Mkuu wa Shule */
-            .headmaster-box {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .headmaster-img {
-                width: 80px;
-                height: 80px;
-                margin-bottom: 10px;
-            }
-
-            /* 7. Rekebisha "Search Bar" */
-            .search-section {
-                margin-top: 60px;
-                padding: 10px;
-            }
-
-            #searchInput {
-                font-size: 0.9rem !important;
-            }
-        }
-
-        /* Kuzuia kitu chochote kisisukume kioo kwenda pembeni (Horizontal Scroll) */
-        body,
-        html {
-            overflow-x: hidden;
-            position: relative;
-            width: 100%;
         }
 
         .logo img {

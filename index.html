@@ -21,41 +21,35 @@
             --accent-green: #4ade80;
         }
 
-        /* Hii inahakikisha kadi za "Neno la Mwezi" na "Mkuu wa Shule" hazishuki chini */
-        .welcome-section {
-            display: flex !important;
-            flex-direction: row !important;
-            /* Lazimisha kukaa pembeni */
-            flex-wrap: nowrap !important;
-            /* Zuia vitu visivunjike kwenda chini */
-            gap: 20px;
-            width: 100%;
+        html,
+        body {
+            /* Badala ya width: 100%, tunalazimisha upana wa PC */
+            width: 1100px;
+            margin: 0 auto;
+            overflow-x: visible;
+            /* Hii inaruhusu kuona sehemu ya kulia kama kioo ni kidogo */
+            position: relative;
         }
 
-        /* Hii inahakikisha kadi za historia na dira zinabaki mstari mmoja */
-        .grid-container {
-            display: flex !important;
-            flex-direction: row !important;
-            flex-wrap: nowrap !important;
-            gap: 20px;
+        * {
+            max-width: none !important;
+            /* Inazuia vitu visijibane vikawa nusu */
         }
 
+        .glass-card p,
+        .glass-card h3,
+        .glass-card div {
+            white-space: normal !important;
+            /* Inaruhusu maandishi kushuka chini ndani ya kadi */
+            word-wrap: break-word;
+            /* Inazuia maneno marefu yasitoke nje ya kadi */
+            overflow: visible !important;
+        }
+
+        /* Hii inahakikisha kadi zenyewe zina urefu unaotosha maudhui yako */
         .glass-card {
-            min-width: 350px;
-            /* Inahakikisha kadi hazibanwi sana */
-            flex: 1;
-        }
-
-        nav ul {
-            display: flex !important;
-            /* Inahakikisha menu haipotei */
-            flex-direction: row !important;
-            gap: 15px;
-        }
-
-        @media screen and (max-width: 768px) {
-            /* Futa au komenti (disable) amri zote zilizomo hapa awali */
-            /* Hii itazuia simu isibadilishe mpangilio wa menu */
+            height: auto !important;
+            min-height: fit-content;
         }
 
         /* RESET & BASE */

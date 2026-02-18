@@ -16,7 +16,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.jpg">
     <style>
-        /* CSS VARIABLES - Rangi na Settings */
         :root {
             --primary-green: #2d5a27;
             --dark-grey: #1a1c1e;
@@ -26,77 +25,167 @@
             --accent-green: #4ade80;
         }
 
-        @media screen and (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                /* Inaweka logo juu, menu chini */
-                padding: 10px;
-            }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            /* Muhimu: Inazuia kuteleza kushoto/kulia */
+            background: linear-gradient(135deg, var(--dark-grey), var(--primary-green));
+            background-attachment: fixed;
+            color: var(--text-light);
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        /* NAVIGATION KWA SIMU (Hamburger Trigger) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 5px;
+        }
+
+        /* GLASS CARD - IMEBORESHWA KWA SIMU */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 20px;
+            /* Punguza padding kutoka 30 hadi 20 */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            width: 100%;
+            /* Ijae upana wa container */
+        }
+
+        /* GRID SYSTEM YA SIMU */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 5%;
+        }
+
+        /* MEDIA QUERIES ZA KUREKEBISHA MAKOSA */
+        @media (max-width: 768px) {
             nav ul {
+                display: none;
+                /* Ficha menu ya kawaida */
+            }
+
+            .menu-toggle {
                 display: flex;
-                flex-wrap: wrap;
-                /* Inafanya menu zishuke mstari wa pili zikikosa nafasi */
-                justify-content: center;
-                gap: 8px;
-                margin-top: 10px;
+                /* Onyesha hamburger button */
             }
 
-            nav ul li {
-                margin: 0;
-            }
-
-            nav ul li a {
-                font-size: 13px;
-                /* Punguza maandishi kidogo kwenye simu */
+            .grid-container {
+                grid-template-columns: 1fr;
+                /* Kadi moja moja chini ya nyingine */
             }
 
             .logo span {
-                font-size: 1rem;
-                text-align: center;
+                font-size: 0.85rem;
+            }
+
+            .logo img {
+                max-height: 35px;
+            }
+
+            .glass-card {
+                padding: 15px;
+                /* Padding ndogo zaidi kwa simu */
             }
         }
 
-        @media screen and (max-width: 600px) {
+        /* WhatsApp Button Fix */
+        .whatsapp-liquid-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
 
-            /* Inafanya kadi zijipange moja moja kwenda chini */
-            .grid-container,
-            .welcome-section,
-            .grid {
-                display: block !important;
-                padding: 10px;
+        .glass-water-bubble {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: float-liquid 3s ease-in-out infinite;
+        }
+
+        @keyframes float-liquid {
+
+            0%,
+            100% {
+                transform: translateY(0);
             }
 
-            .glass-card,
-            .box,
-            .sub-card {
-                width: 100% !important;
-                margin-bottom: 20px;
-                min-width: 0 !important;
+            50% {
+                transform: translateY(-10px);
             }
-
-            /* Punguza ukubwa wa maandishi ya kichwa (H1) */
-            .hero h1 {
-                font-size: 1.8rem !important;
-            }
-
-            /* Rekebisha picha ya mkuu wa shule isichukue nafasi kubwa */
-            .headmaster-box {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .headmaster-img {
-                width: 80px;
-                height: 80px;
-                margin-bottom: 10px;
-            }
-
-            /* Inazuia kioo kucheza kushoto na kulia (Horizontal Scroll) */
-            body,
-            html {
-                overflow-x: hidden;
-            }
+        }
+    </style>
+    <style>
+        /* CSS VARIABLES - Rangi na Settings */
+        :root {
+            --primary-green: #2d5a27;
+            --dark-grey: #1a1c1e;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-light: #f4f4f4;
+            --accent-green: #4ade80;
         }
 
         * {
@@ -127,193 +216,6 @@
             /* Unaweza kuongeza au kupunguza size hapa */
             width: auto;
             object-fit: contain;
-        }
-
-        /* Kwenye simu, logo isichukue nafasi kubwa sana */
-        @media (max-width: 600px) {
-            .logo span {
-                font-size: 0.9rem;
-            }
-
-            .logo img {
-                max-height: 35px;
-            }
-        }
-
-        /* GLASSMORPHISM REUSABLE STYLE */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        .grid-container {
-            display: flex;
-            flex-wrap: wrap;
-            /* Hii ni muhimu kwa ajili ya simu */
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .box {
-            flex: 1;
-            min-width: 300px;
-            /* Hii inahakikisha kadi haziwi nyembamba sana */
-            max-width: 400px;
-        }
-
-        .border-blue {
-            border-top: 5px solid #3498db;
-        }
-
-        .button-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        /* Inahakikisha kwenye simu kila box linachukua upana wote */
-        @media (max-width: 768px) {
-            .box {
-                min-width: 100%;
-            }
-        }
-
-        /* NAVIGATION */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background: rgba(0, 0, 0, 0.7);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent-green);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent-green);
-        }
-
-        /* WhatsApp Liquid Glass Style */
-        .whatsapp-liquid-link {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
-            text-decoration: none;
-        }
-
-        .glass-water-bubble {
-            width: 65px;
-            height: 65px;
-            background: rgba(255, 255, 255, 0.15);
-            /* Transparency ya kioo */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-
-            /* Pure Glass Border & Shadow */
-            border: 1.5px solid rgba(255, 255, 255, 0.4);
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 0 10px rgba(255, 255, 255, 0.2);
-
-            /* Smooth transition */
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Reflection Effect (Mng'ao wa juu kama maji) */
-        .glass-water-bubble::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 15%;
-            width: 70%;
-            height: 30%;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
-            border-radius: 50%;
-        }
-
-        .glass-water-bubble img {
-            width: 35px;
-            height: 35px;
-            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
-        }
-
-        /* Hover Animation - Inacheza kama tone la maji */
-        .whatsapp-liquid-link:hover .glass-water-bubble {
-            transform: scale(1.1) translateY(-5px);
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow:
-                0 15px 45px rgba(0, 0, 0, 0.4),
-                inset 0 0 20px rgba(255, 255, 255, 0.3);
-            border-color: #4ade80;
-            /* Inang'aa rangi ya kijani kidogo ukigusa */
-        }
-
-        /* Floating Animation */
-        @keyframes float-liquid {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        .whatsapp-liquid-link {
-            animation: float-liquid 3s ease-in-out infinite;
-        }
-
-        /* Kwenye Simu Punguza Ukubwa Kidogo */
-        @media (max-width: 600px) {
-            .glass-water-bubble {
-                width: 55px;
-                height: 55px;
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .glass-water-bubble img {
-                width: 28px;
-                height: 28px;
-            }
         }
 
         /* SLIDESHOW HERO SECTION */

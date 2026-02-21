@@ -22,7 +22,6 @@
             color: white;
             display: flex;
             flex-direction: column;
-            /* Ili button na kadi vikae wima */
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -32,33 +31,69 @@
             overflow-x: hidden;
         }
 
-        /* --- BOX YA KURUDI NYUMBANI (HOME) --- */
-        .back-home-box {
-            align-self: flex-start;
-            /* Inakaa kushoto */
-            max-width: 500px;
+        /* --- BUTTON YA KURUDI NYUMBANI (LIQUID GLASS) --- */
+        .back-home-container {
             width: 100%;
-            margin: 0 auto 15px auto;
-            /* Inajiweka katikati ya kioo juu ya kadi */
+            max-width: 500px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-start;
         }
 
-        .back-link {
+        .liquid-glass-btn {
+            position: relative;
             display: inline-flex;
             align-items: center;
-            padding: 8px 15px;
-            background: var(--glass-bg);
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            color: var(--accent-green);
+            border-radius: 50px;
+            /* Round liquid shape */
+            color: white;
             text-decoration: none;
-            font-size: 0.85rem;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .back-link:hover {
-            background: rgba(74, 222, 128, 0.1);
+        /* Liquid Shine Effect */
+        .liquid-glass-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        .liquid-glass-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-green);
+            box-shadow: 0 8px 25px rgba(74, 222, 128, 0.2);
+        }
+
+        .liquid-glass-btn:hover::before {
+            transform: scale(1);
+        }
+
+        .liquid-glass-btn span {
+            margin-right: 10px;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .liquid-glass-btn:hover span {
             transform: translateX(-5px);
+            color: var(--accent-green);
         }
 
         /* --- KADI YA FOMU --- */
@@ -159,9 +194,9 @@
 
 <body>
 
-    <div class="back-home-box">
-        <a href="index.html" class="back-link">
-            <span style="margin-right: 8px;">←</span> Rudi Nyumbani
+    <div class="back-home-container">
+        <a href="index.html" class="liquid-glass-btn">
+            <span>←</span> Rudi Nyumbani
         </a>
     </div>
 

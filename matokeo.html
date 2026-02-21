@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="sw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-green: #008f39;
+            --dark-bg: #050a06;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-main: #ffffff;
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #0a1a0f, var(--dark-bg));
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 15px;
+            line-height: 1.6;
+        }
+
+        #Matokeo {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.6rem;
+            margin: 40px 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: linear-gradient(to right, #fff, var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        /* Glass Card Base */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 143, 57, 0.2);
+        }
+
+        /* Grid System */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Internal Exam Grid */
+        .internal-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            text-align: center;
+            color: white;
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, var(--primary-green), #00c851);
+            box-shadow: 0 4px 15px rgba(0, 143, 57, 0.3);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: black;
+        }
+
+        .btn-mock {
+            background: transparent;
+            border: 1px solid #3498db;
+            color: #3498db;
+        }
+
+        .btn-mock:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        /* Text Styles */
+        h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .note {
+            font-size: 0.7rem;
+            color: #00ff62;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .internal-links {
+                grid-template-columns: 1fr;
+            }
+
+            /* Moja kwa moja kwenye simu ndogo */
+            .glass-card {
+                padding: 15px;
+            }
+
+            .btn {
+                font-size: 0.8rem;
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="Matokeo">
+
+        <h2 class="section-title">Matokeo ya Shule</h2>
+        <div style="display: flex; justify-content: center;">
+            <div class="glass-card"
+                style="width: 100%; max-width: 550px; text-align: center; border-top: 4px solid #ffcc00;">
+                <h3 style="color: #ffcc00;">🏫 Mtihani wa mwisho wa Ndani ya shule</h3>
+                <span class="subtitle">Mitihani ya muhula au nusu muhula</span>
+
+                <div class="internal-links">
+                    <a href="#" class="btn btn-outline">Form 1 - View</a>
+                    <a href="#" class="btn btn-outline">Form 2 - View</a>
+                    <a href="#" class="btn btn-outline">Form 3 - View</a>
+                    <a href="#" class="btn btn-outline">Form 4 - View</a>
+                    <a href="#" class="btn btn-outline">Form 5 - View</a>
+                    <a href="#" class="btn btn-outline">Form 6 - View</a>
+                </div>
+                <p class="note">* Matokeo ya ndani ya Shule ya Sekondari Embarway</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Matokeo ya Kitaifa</h2>
+
+        <div class="results-grid">
+            <div class="glass-card" style="border-top: 4px solid var(--primary-green); text-align: center;">
+                <h3 style="color: var(--primary-green);">Msimu wa 2025</h3>
+                <span class="subtitle">Ufaulu wa hivi punde (S1159)</span>
+
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://onlinesys.necta.go.tz/results/2025/ftna/results/S1159.htm" target="_blank"
+                        class="btn btn-green">📝 Kidato cha Pili (FTNA)</a>
+                    <a href="https://matokeo.necta.go.tz/results/2025/csee/results/s1159.htm" target="_blank"
+                        class="btn btn-green">📊 Kidato cha Nne (CSEE)</a>
+                    <a href="https://onlinesys.necta.go.tz/results/2025/acsee/results/s1159.htm" target="_blank"
+                        class="btn btn-green">🎓 Kidato cha Sita (ACSEE)</a>
+                </div>
+            </div>
+
+            <div class="glass-card" style="border-top: 4px solid #888; text-align: center;">
+                <h3 style="color: #ccc;">Kumbukumbu 2024</h3>
+                <span class="subtitle">Rejea matokeo ya mwaka uliopita</span>
+
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://onlinesys.necta.go.tz/results/2024/ftna/results/S1159.htm" target="_blank"
+                        class="btn btn-outline">Kidato cha Pili (FTNA)</a>
+                    <a href="https://onlinesys.necta.go.tz/results/2024/csee/results/s1159.htm" target="_blank"
+                        class="btn btn-outline">Kidato cha Nne (CSEE)</a>
+                    <a href="https://onlinesys.necta.go.tz/results/2024/acsee/results/s1159.htm" target="_blank"
+                        class="btn btn-outline">Kidato cha Sita (ACSEE)</a>
+                </div>
+            </div>
+
+            <div class="glass-card" style="border-top: 4px solid #3498db; text-align: center;">
+                <h3 style="color: #3498db;">MOCK 2025</h3>
+                <span class="subtitle">Majaribio ya Mkoa & Kanda</span>
+
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://mock.famnet.co.tz/results/view/SS664f3889f358a_NC_136?v=1770032456" target="_blank"
+                        class="btn btn-mock">Mock Kidato cha Nne</a>
+                    <a href="https://drive.google.com/file/d/1lv31sSma0JkkRveXu3lbDm_2-WI26IKo/view" target="_blank"
+                        class="btn btn-mock">Mock Kidato cha Sita</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

@@ -21,15 +21,47 @@
             background-attachment: fixed;
             color: white;
             display: flex;
+            flex-direction: column;
+            /* Ili button na kadi vikae wima */
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            padding: 15px; /* Punguza kidogo padding ya pembeni kwa ajili ya simu */
+            padding: 15px;
             box-sizing: border-box;
-            overflow-x: hidden; /* Inazuia kioo kucheza kushoto/kulia */
+            overflow-x: hidden;
         }
 
+        /* --- BOX YA KURUDI NYUMBANI (HOME) --- */
+        .back-home-box {
+            align-self: flex-start;
+            /* Inakaa kushoto */
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto 15px auto;
+            /* Inajiweka katikati ya kioo juu ya kadi */
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-size: 0.85rem;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            background: rgba(74, 222, 128, 0.1);
+            transform: translateX(-5px);
+        }
+
+        /* --- KADI YA FOMU --- */
         .apply-card {
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
@@ -38,7 +70,7 @@
             border-radius: 20px;
             padding: 25px;
             width: 100%;
-            max-width: 500px; /* Nimepunguza kidogo iwe compact zaidi */
+            max-width: 500px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             box-sizing: border-box;
         }
@@ -70,7 +102,6 @@
             display: block;
             margin-bottom: 5px;
             font-size: 0.8rem;
-            font-weight: 400;
         }
 
         input,
@@ -106,16 +137,15 @@
         }
 
         .btn-submit:active {
-            transform: scale(0.98); /* Feedback mtumiaji akibonyeza kwenye simu */
+            transform: scale(0.98);
         }
 
-        /* --- HAPA NDIPO TUNAREKEBISHA KWA AJILI YA SIMU --- */
         @media screen and (max-width: 480px) {
             .row-group {
-                flex-direction: column; /* Umri na Jinsia zitakaa moja chini ya nyingine */
+                flex-direction: column;
                 gap: 0;
             }
-            
+
             .apply-card {
                 padding: 20px;
             }
@@ -128,6 +158,12 @@
 </head>
 
 <body>
+
+    <div class="back-home-box">
+        <a href="index.html" class="back-link">
+            <span style="margin-right: 8px;">←</span> Rudi Nyumbani
+        </a>
+    </div>
 
     <div class="apply-card">
         <h2>Maombi ya Nafasi</h2>
@@ -195,7 +231,7 @@
                 return;
             }
 
-            const namba = "255754088341"; 
+            const namba = "255754088341";
             const ujumbe = "*MAOMBI YA NAFASI YA MASOMO - EMBARWAY*%0A" +
                 "------------------------------------%0A" +
                 "*Jina:* " + jina + "%0A" +

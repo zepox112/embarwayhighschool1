@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Holiday Hub | Embarway Secondary</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-green: #1b3d17;
@@ -93,6 +94,53 @@
             text-shadow: 1px 1px 2px black;
         }
 
+        .home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 45px;
+            height: 45px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-size: 1.2rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .home-btn:hover {
+            background: var(--accent-green);
+            color: var(--primary-green);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--accent-green);
+        }
+
+        /* Kuficha maandishi kwenye simu ndogo ili isizibe screen */
+        .home-btn span {
+            display: none;
+            font-size: 0.8rem;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+
+        @media (min-width: 768px) {
+            .home-btn {
+                width: auto;
+                padding: 0 15px;
+            }
+
+            .home-btn span {
+                display: inline;
+            }
+        }
+
         .subject-list {
             display: none;
             margin-top: 25px;
@@ -167,7 +215,10 @@
 </head>
 
 <body>
-
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i>
+        <span>Rudi Nyumbani</span>
+    </a>
     <div class="container">
         <header>
             <h2 style="margin:0;">Embarway Assignment Hub</h2>

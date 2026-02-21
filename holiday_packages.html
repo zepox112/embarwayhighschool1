@@ -48,7 +48,7 @@
             font-size: 0.85rem;
             opacity: 0.8;
             display: block;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         input,
@@ -64,12 +64,11 @@
             box-sizing: border-box;
         }
 
-        /* Progress Bar Section */
         .progress-section {
             background: rgba(0, 0, 0, 0.2);
             padding: 15px;
             border-radius: 12px;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .bar-bg {
@@ -85,7 +84,7 @@
             height: 100%;
             width: 0%;
             background: var(--red-glow);
-            transition: width 0.5s ease, background 0.5s ease;
+            transition: width 0.5s ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -94,7 +93,6 @@
             text-shadow: 1px 1px 2px black;
         }
 
-        /* Subject Items */
         .subject-list {
             display: none;
             margin-top: 25px;
@@ -113,46 +111,41 @@
             gap: 15px;
         }
 
-        .subject-name {
-            font-weight: 600;
-            color: var(--accent-green);
+        .subject-info {
             flex: 1;
             min-width: 150px;
         }
 
-        .action-btns {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
+        .subject-name {
+            font-weight: 600;
+            color: var(--accent-green);
+            display: block;
+        }
+
+        .teacher-contact {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            font-style: italic;
         }
 
         .btn-dl {
             background: #3498db;
             color: white;
             text-decoration: none;
-            padding: 6px 12px;
+            padding: 8px 15px;
             border-radius: 6px;
             font-size: 0.8rem;
             font-weight: bold;
-        }
-
-        .upload-wrapper {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 5px 10px;
-            border-radius: 6px;
-            border: 1px dashed #666;
         }
 
         .btn-send {
             background: var(--accent-green);
             color: black;
             border: none;
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
         }
 
         .btn-send.done {
@@ -167,7 +160,6 @@
             padding: 15px;
             border-radius: 10px;
             text-align: center;
-            font-weight: bold;
             margin-top: 15px;
             border: 1px solid var(--accent-green);
         }
@@ -179,7 +171,7 @@
     <div class="container">
         <header>
             <h2 style="margin:0;">Embarway Assignment Hub</h2>
-            <p style="font-size: 0.8rem; opacity: 0.7;">Kamilisha masomo yako na upate asilimia 100%</p>
+            <p style="font-size: 0.8rem; opacity: 0.7;">Tuma kazi zako kwa walimu husika kwa haraka</p>
         </header>
 
         <div class="info-card">
@@ -187,7 +179,7 @@
             <input type="text" id="stuName" placeholder="Mfano: Juma Shabaan Mwinyi">
 
             <label>Chagua Kidato</label>
-            <select id="classSelect" onchange="showSubjects()">
+            <select id="classSelect" onchange="toggleSections(); showSubjects();">
                 <option value="">-- Chagua Darasa --</option>
                 <option value="f1">Form One</option>
                 <option value="f2">Form Two</option>
@@ -197,6 +189,32 @@
                 <option value="f6">Form Six</option>
             </select>
 
+            <div id="streamSection" style="display: none;">
+                <label>Chagua Mkondo</label>
+                <select id="streamSelect">
+                    <option value="">-- Chagua Mkondo --</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+            </div>
+
+            <div id="combiSection" style="display: none;">
+                <label>Chagua Combination</label>
+                <select id="combiSelect">
+                    <option value="">-- Chagua Combination --</option>
+                    <option value="HGL">HGL</option>
+                    <option value="HGK">HGK</option>
+                    <option value="HGE">HGE</option>
+                    <option value="HGLi">HGLi</option>
+                    <option value="CBG">CBG</option>
+                    <option value="HKL">HKL</option>
+                    <option value="HGFa">HGFa</option>
+                </select>
+            </div>
+
             <div class="progress-section">
                 <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
                     <span id="statusText">Maendeleo: 0%</span>
@@ -205,7 +223,7 @@
                 <div class="bar-bg">
                     <div id="progressBar">0%</div>
                 </div>
-                <div id="congrats">🎉 HONGERA! UMEKAMILISHA KAZI ZOTE! 🎉</div>
+                <div id="congrats">🎉 HONGERA! KAZI ZOTE ZIMETUMWA! 🎉</div>
             </div>
         </div>
 
@@ -217,24 +235,64 @@
     </div>
 
     <script>
+        // HAPA NDIPO UNAPOBADILISHA NAMBA ZA WALIMU KWA KILA SOMO
+        // Format ni "JINA LA SOMO": "Namba_ya_Simu"
+        const nambaZaWalimu = {
+            "PHYSICS": "255783243745",
+            "CHEMISTRY": "255783243745",
+            "BIOLOGY": "255783243745",
+            "BASIC MATHEMATICS": "255783243745",
+            "GEOGRAPHY": "255783243745",
+            "HISTORY": "255783243745",
+            "BUSINESS STUDIES": "255783243745",
+            "ENGLISH": "255783243745",
+            "KISWAHILI": "255783243745",
+            "BOOK KEEPING": "255783243745",
+            "COMPUTER SCIENCE": "255783243745",
+            "HISTORIA YA TANZANIA NA MAADILI": "255783243745",
+            "CIVICS": "255783243745",
+            "COMMERCE": "255783243745",
+            // Masomo ya A-Level
+            "History 1": "255783243745", "History 2": "255783243745",
+            "Geography 1": "255783243745", "Geography 2": "255783243745",
+            "Language 1": "255783243745", "Language 2": "255783243745",
+            "Kiswahili 1": "255783243745", "Kiswahili 2": "255783243745",
+            "Economics 1": "255783243745", "Economics 2": "255783243745",
+            "Literature in English 1": "255783243745", "Literature in English 2": "255783243745",
+            "Chemistry 1": "255783243745", "Chemistry 2": "255783243745",
+            "Biology 1": "255783243745", "Biology 2": "255783243745",
+            "Fasihi 1": "255783243745", "Fasihi 2": "255783243745",
+            "General Studies (GS)": "255783243745", "BAM": "255783243745"
+        };
+
         const data = {
             f1: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "BUSINESS STUDIES", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMPUTER SCIENCE", "HISTORIA YA TANZANIA NA MAADILI"],
             f2: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "BUSINESS STUDIES", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMPUTER SCIENCE", "HISTORIA YA TANZANIA NA MAADILI"],
             f3: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "CIVICS", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMMERCE"],
             f4: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "CIVICS", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMMERCE"],
-            f5: [
-                "History 1", "History 2", "Geography 1", "Geography 2", "Language 1", "Language 2", "Kiswahili 1", "Kiswahili 2",
-                "Economics 1", "Economics 2", "Literature in English 1", "Literature in English 2", "Chemistry 1", "Chemistry 2",
-                "Biology 1", "Biology 2", "Fasihi 1", "Fasihi 2", "Historia ya Tanzania na Maadili", "BAM"
-            ],
-            f6: [
-                "History 1", "History 2", "Geography 1", "Geography 2", "Language 1", "Language 2", "Kiswahili 1", "Kiswahili 2",
-                "Economics 1", "Economics 2", "Chemistry 1", "Chemistry 2", "Biology 1", "Biology 2", "General Studies (GS)", "BAM"
-            ]
+            f5: ["History 1", "History 2", "Geography 1", "Geography 2", "Language 1", "Language 2", "Kiswahili 1", "Kiswahili 2", "Economics 1", "Economics 2", "Literature in English 1", "Literature in English 2", "Chemistry 1", "Chemistry 2", "Biology 1", "Biology 2", "Fasihi 1", "Fasihi 2", "Historia ya Tanzania na Maadili", "BAM"],
+            f6: ["History 1", "History 2", "Geography 1", "Geography 2", "Language 1", "Language 2", "Kiswahili 1", "Kiswahili 2", "Economics 1", "Economics 2", "Chemistry 1", "Chemistry 2", "Biology 1", "Biology 2", "General Studies (GS)", "BAM"]
         };
 
         let completedSubjects = new Set();
         let targetNeeded = 0;
+
+        function toggleSections() {
+            const cls = document.getElementById('classSelect').value;
+            const streamDiv = document.getElementById('streamSection');
+            const combiDiv = document.getElementById('combiSection');
+
+            if (cls === 'f5' || cls === 'f6') {
+                combiDiv.style.display = "block";
+                streamDiv.style.display = "none";
+            } else if (cls !== "") {
+                streamDiv.style.display = "block";
+                combiDiv.style.display = "none";
+            } else {
+                streamDiv.style.display = "none";
+                combiDiv.style.display = "none";
+            }
+        }
 
         function showSubjects() {
             const cls = document.getElementById('classSelect').value;
@@ -243,7 +301,7 @@
             const listItems = document.getElementById('listItems');
             const classTitle = document.getElementById('classTitle');
 
-            if (!name || name.trim().split(" ").length < 3) {
+            if (cls && (!name || name.trim().split(" ").length < 3)) {
                 alert("Tafadhali andika majina yako matatu kwanza!");
                 document.getElementById('classSelect').value = "";
                 return;
@@ -254,21 +312,24 @@
                 listItems.innerHTML = "";
                 completedSubjects.clear();
                 const selectedText = document.getElementById('classSelect').options[document.getElementById('classSelect').selectedIndex].text;
-                classTitle.innerText = "Orodha ya Masomo - " + selectedText;
+                classTitle.innerText = "Masomo - " + selectedText;
 
                 targetNeeded = (cls === 'f5' || cls === 'f6') ? 6 : 7;
-
                 updateProgress();
 
                 data[cls].forEach((sub, index) => {
+                    const teacherPhone = nambaZaWalimu[sub] || "255783243745";
                     listItems.innerHTML += `
-                <div class="subject-item">
-                    <div class="subject-name">${sub}</div>
-                    <div class="action-btns">
-                        <a href="#" class="btn-dl">⬇ Pakua</a>
-                        <button class="btn-send" id="btn-${index}" onclick="tumaKazi('${sub}', ${index})">Tuma</button>
-                    </div>
-                </div>`;
+                        <div class="subject-item">
+                            <div class="subject-info">
+                                <span class="subject-name">${sub}</span>
+                                <span class="teacher-contact">Tuma kwa: ${teacherPhone}</span>
+                            </div>
+                            <div class="action-btns" style="display:flex; gap:10px;">
+                                <a href="#" class="btn-dl">⬇ Pakua</a>
+                                <button class="btn-send" id="btn-${index}" onclick="tumaKazi('${sub}', ${index})">Tuma</button>
+                            </div>
+                        </div>`;
                 });
             } else {
                 display.style.display = "none";
@@ -276,29 +337,32 @@
         }
 
         function tumaKazi(sub, index) {
-            const fileInput = document.getElementById(`file-${index}`);
             const btn = document.getElementById(`btn-${index}`);
             const name = document.getElementById('stuName').value;
-            const clsElement = document.getElementById('classSelect');
-            const className = clsElement.options[clsElement.selectedIndex].text;
+            const clsSelect = document.getElementById('classSelect');
+            const className = clsSelect.options[clsSelect.selectedIndex].text;
 
+            const stream = document.getElementById('streamSelect').value;
+            const combi = document.getElementById('combiSelect').value;
 
-            // --- SEHEMU YA WHATSAPP ---
-            const phone = "255783243745";
+            // Pata namba husika ya somo hili
+            const phone = nambaZaWalimu[sub] || "255783243745";
+
+            let extraInfo = "";
+            if (combi) extraInfo = `*Combination:* ${combi}`;
+            else if (stream) extraInfo = `*Mkondo:* ${stream}`;
+
             const text = `*KAZI YA LIKIZO - EMBARWAY*%0A` +
                 `--------------------------%0A` +
                 `*Mwanafunzi:* ${name}%0A` +
                 `*Kidato:* ${className}%0A` +
+                `${extraInfo}%0A` +
                 `*Somo:* ${sub}%0A` +
                 `--------------------------%0A` +
-                `Nimeambatanisha picha za kazi yangu hapa chini:`;
+                `Mwalimu, nimeambatanisha picha za kazi yangu hapa chini:`;
 
-            const waLink = `https://wa.me/${phone}?text=${text}`;
+            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
 
-            // Fungua WhatsApp
-            window.open(waLink, '_blank');
-
-            // Update Progress UI
             if (!completedSubjects.has(sub)) {
                 completedSubjects.add(sub);
                 btn.classList.add('done');
@@ -320,14 +384,11 @@
             bar.style.width = percent + "%";
             bar.innerText = percent + "%";
             statusText.innerText = `Maendeleo: ${percent}%`;
-            counterText.innerText = `${completedSubjects.size}/${targetNeeded} Masomo Muhimu`;
+            counterText.innerText = `${completedSubjects.size}/${targetNeeded} Masomo muhimu`;
 
             if (percent >= 100) {
                 bar.style.background = "var(--blue-glow)";
                 congrats.style.display = "block";
-            } else if (percent > 0) {
-                bar.style.background = `linear-gradient(90deg, var(--red-glow), var(--blue-glow) ${percent}%)`;
-                congrats.style.display = "none";
             } else {
                 bar.style.background = "var(--red-glow)";
                 congrats.style.display = "none";

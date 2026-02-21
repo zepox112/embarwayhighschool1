@@ -703,6 +703,40 @@
             animation-duration: 3s;
         }
 
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: #4ade80;
+            color: black;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            /* Inakuwa haionekani mwanzoni */
+            transition: all 0.5s ease;
+            z-index: 2000;
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+            transform: translateY(100px);
+            /* Inakaa chini ya kioo */
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            transform: translateY(0);
+            /* Inapanda juu inapotakiwa kuonekana */
+        }
+
+        #backToTop:hover {
+            background: white;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+        }
+
         .bubble:nth-child(2) {
             width: 10px;
             height: 10px;
@@ -967,7 +1001,7 @@
                 onkeyup="liveSearch()">
             <div id="searchSuggestions" class="suggestions-box"></div>
         </div>
-    </div>F
+    </div>
 
     <header id="nyumbani" class="hero">
         <div class="slide active" style="background-image: url('emba1.jpg');"></div>
@@ -976,7 +1010,8 @@
         <div class="slide" style="background-image: url('emba4.jpg');"></div>
         <div class="slide" style="background-image: url('emba5.jpg');"></div>
         <div class="slide" style="background-image: url('emba6.jpg');"></div>
-
+        <div class="slide" style="background-image: url('emba7.png');"></div>
+        <div class="slide" style="background-image: url('emba8.png');"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>KARIBU SHULE YA SEKONDARI EMBARWAY</h1>
@@ -1055,9 +1090,8 @@
     <section id="taaluma">
         <div class="updates-bar">
             <div class="updates-content">
-                🔥 TAARIFA ZA PUNDE: Matokeo ya Kidato cha Nne (CSEE) 2025 yametoka! Wastani wa Shule ni GPA
-                3.2920(Daraja
-                C). Hongereni wahitimu wote! &nbsp;&nbsp;&nbsp;&nbsp; 📢 USAJILI: Nafasi za kuhamia kwa Kidato cha
+                🔥 TAARIFA ZA PUNDE: Shule ya Sekondari Embarway inawatakia Waislamu wote mwezi mwema wa Ramadhani.
+                Ramadhan Kareem! &nbsp;&nbsp;&nbsp;&nbsp; 📢 USAJILI: Nafasi za kuhamia kwa Kidato cha
                 Kwanza
                 zimeisha.
             </div>
@@ -1377,6 +1411,7 @@
                         📥 Pakua Joining Instruction (F5)
                     </a>
                 </div>
+
             </div>
             <div
                 style="text-align: center; margin-top: 30px; padding: 20px; border-top: 1px solid var(--glass-border);">
@@ -1412,6 +1447,52 @@
                     box-shadow: 0 8px 25px rgba(74, 222, 128, 0.5);
                 }
             </style>
+        </div>
+    </section>
+    <section id="holiday-link-section" style="padding: 40px 5%;">
+        <div class="glass-card" style="
+        background: rgba(45, 90, 39, 0.2); 
+        border: 2px solid var(--accent-green); 
+        text-align: center; 
+        padding: 40px; 
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transition: 0.4s ease;">
+
+            <h2 style="color: var(--accent-green); margin-bottom: 15px; font-size: 2rem;">📚 Holiday Packages 2026</h2>
+            <p style="margin-bottom: 25px; font-size: 1.1rem; color: #ccc;">
+                Wanafunzi wa Kidato cha 1 hadi cha 6 wanaweza kupakua na kutuma kazi za likizo hapa kwa urahisi.
+            </p>
+
+            <a href="holiday_packages.html" class="btn-matokeo" style="
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            padding: 18px 40px;
+            font-size: 1rem;
+            display: inline-block;">
+                Fungua Ukurasa wa Kazi za Likizo
+            </a>
+        </div>
+        <div style="padding: 0 5%; margin: 20px 0;">
+            <div
+                style="background: rgba(74, 222, 128, 0.05); border: 1px solid rgba(74, 222, 128, 0.2); border-radius: 15px; padding: 15px 25px; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(10px);">
+                <div style="display:flex; align-items:center; gap:15px;">
+                    <div style="background:rgba(74,222,128,0.1); padding:10px; border-radius:10px; color:#4ade80">
+                        <svg style="width:28px;height:28px" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12,6.25C10.83,5.48 9.25,5 7.5,5C5.75,5 4.17,5.48 3,6.25V19.25C4.17,18.48 5.75,18 7.5,18C9.25,18 10.83,18.48 12,19.25C13.17,18.48 14.75,18 16.5,18C18.25,18 19.83,18.48 21,19.25V6.25C19.83,5.48 18.25,5 16.5,5C14.75,5 13.17,5.48 12,6.25Z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4
+                            style="font-size:13px; text-transform:uppercase; letter-spacing:1px; color: white; margin:0;">
+                            Maktaba ya shule ya Mtandaoni</h4>
+                        <p style="font-size:10px; color:#aaa; margin:0;">Soma vitabu 100+ vya O-Level & A-Level.</p>
+                    </div>
+                </div>
+                <a href="book.html"
+                    style="background:#4ade80; color:black; padding:8px 15px; border-radius:8px; font-size:11px; font-weight:900; text-decoration:none; text-transform:uppercase; transition: 0.3s;">Fungua</a>
+            </div>
         </div>
     </section>
     <section id="faq-section" style="padding: 60px 5%;">
@@ -1466,6 +1547,7 @@
                         mhasibu kupitia
                         namba zetu za simu.
                     </div>
+
                 </div>
             </div>
 
@@ -1546,7 +1628,17 @@
             card.classList.toggle('active');
         }
     </script>
-
+    <script>
+        window.onscroll = function () {
+            let btn = document.getElementById("backToTop");
+            // Mshale utatokea ukishashuka chini zaidi ya pixel 400
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                btn.classList.add("show");
+            } else {
+                btn.classList.remove("show");
+            }
+        };
+    </script>
 
     <section id="mawasiliano">
         <h2 class="section-title">Mawasiliano</h2>
@@ -1663,6 +1755,11 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
         </div>
     </a>
+    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
+        </svg>
+    </button>
 </body>
 
 </html>

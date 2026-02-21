@@ -1633,7 +1633,12 @@
             </div>
         </div>
     </section>
-
+    <div id="installContainer" style="display: none; text-align: center; padding: 20px;">
+        <button id="btnInstall"
+            style="background-color: #006400; color: white; border: none; padding: 12px 25px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: inline-flex; align-items: center; gap: 10px;">
+            📲 Install Embarway App
+        </button>
+    </div>
     <footer>
         <p>&copy; 2026 Shule ya Sekondari Emabarway. Haki zote zimehifadhiwa.</p>
     </footer>
@@ -1730,6 +1735,65 @@
             <path fill="currentColor" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
         </svg>
     </button>
+    <script>
+        // 1. Sajili Service Worker (sw.js)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker: Imesajiliwa kikamilifu'))
+                    .catch(err => console.log('Service Worker: Imefeli', err));
+            });
+        }
+
+        // 2. Kamata tukio la ku-install (Before Install Prompt)
+        let deferredPrompt;
+        const installContainer = document.getElementById('installContainer');
+        const btnInstall = document.getElementById('btnInstall');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Zuia browser isitoe pop-up yake yenyewe
+            e.preventDefault();
+            // Hifadhi tukio ili tulitumie baadaye
+            deferredPrompt = e;
+
+            // Onyesha kitufe chako cha "Install" sasa
+            if (installContainer) {
+                installContainer.style.display = 'block';
+            }
+
+            console.log("Mfumo wa ku-install uko tayari!");
+        });
+
+        // 3. Shughulikia kitendo cha kubonyeza kitufe cha Install
+        if (btnInstall) {
+            btnInstall.addEventListener('click', async () => {
+                if (!deferredPrompt) return;
+
+                // Onyesha lile boksi la Install la simu/browser
+                deferredPrompt.prompt();
+
+                // Subiri jibu la mtumiaji (Kama amekubali au amekataa)
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`Mtumiaji amechagua: ${outcome}`);
+
+                // Safisha deferredPrompt - haiwezi kutumika tena baada ya hapa
+                deferredPrompt = null;
+
+                // Ficha kitufe chetu
+                if (installContainer) {
+                    installContainer.style.display = 'none';
+                }
+            });
+        }
+
+        // 4. Ficha kitufe kama tayari App imeshawekwa (Installed)
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('Asante! Embarway App imewekwa kwenye home screen.');
+            if (installContainer) {
+                installContainer.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>

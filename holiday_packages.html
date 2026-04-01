@@ -4,234 +4,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holiday Hub | Embarway Secondary</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Embarway Hub | Assignment Center</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-green: #1b3d17;
-            --accent-green: #4ade80;
-            --dark-bg: #0f1113;
-            --blue-glow: #3498db;
-            --red-glow: #ff4d4d;
-            --glass: rgba(255, 255, 255, 0.07);
+            --primary-bg: #080a0c;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --accent: #4ade80;
+            --blue: #3498db;
+            --warning: #f1c40f;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle at top, var(--primary-green), var(--dark-bg));
-            color: white;
+            background: radial-gradient(circle at top right, #1a2a1a, var(--primary-bg));
+            color: var(--text-main);
             margin: 0;
-            padding: 15px;
+            padding: 20px;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 550px;
             margin: auto;
         }
 
-        header {
+        h2 {
             text-align: center;
-            margin: 20px 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--accent), #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            font-size: 2.2rem;
         }
 
-        .info-card {
-            background: var(--glass);
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-size: 0.85rem;
-            opacity: 0.8;
+        #statusText {
+            font-size: 0.75rem;
+            text-align: center;
+            color: var(--accent);
+            margin-bottom: 10px;
             display: block;
-            margin-top: 15px;
+            opacity: 0.8;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
         }
 
         input,
         select {
             width: 100%;
-            padding: 12px;
-            margin-top: 8px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px;
+            margin-top: 12px;
+            border-radius: 12px;
             background: rgba(0, 0, 0, 0.3);
             color: white;
-            outline: none;
+            border: 1px solid var(--glass-border);
             box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+            font-size: 15px;
         }
 
-        .progress-section {
-            background: rgba(0, 0, 0, 0.2);
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.2);
+        }
+
+        .reminder-box {
+            background: rgba(241, 196, 15, 0.1);
+            border: 1px solid var(--warning);
             padding: 15px;
-            border-radius: 12px;
-            margin-top: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease;
         }
 
-        .bar-bg {
-            height: 22px;
-            background: #222;
-            border-radius: 11px;
-            overflow: hidden;
-            margin-top: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .reminder-box i {
+            color: var(--warning);
+            margin-right: 10px;
         }
 
-        #progressBar {
-            height: 100%;
-            width: 0%;
-            background: var(--red-glow);
-            transition: width 0.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px black;
+        .reminder-text {
+            font-size: 0.85rem;
+            color: #fceea7;
+            line-height: 1.5;
         }
 
-        .home-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 45px;
-            height: 45px;
-            background: var(--glass);
+        .subject-box {
+            background: var(--card-bg);
+            margin-bottom: 18px;
+            padding: 22px;
+            border-radius: 22px;
+            border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-green);
-            text-decoration: none;
-            font-size: 1.2rem;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: transform 0.3s ease, background 0.3s ease;
+            animation: fadeIn 0.5s ease forwards;
         }
 
-        .home-btn:hover {
-            background: var(--accent-green);
-            color: var(--primary-green);
-            transform: translateY(-3px);
-            box-shadow: 0 0 15px var(--accent-green);
-        }
-
-        /* Kuficha maandishi kwenye simu ndogo ili isizibe screen */
-        .home-btn span {
-            display: none;
-            font-size: 0.8rem;
-            margin-left: 8px;
-            font-weight: 600;
-        }
-
-        @media (min-width: 768px) {
-            .home-btn {
-                width: auto;
-                padding: 0 15px;
-            }
-
-            .home-btn span {
-                display: inline;
-            }
-        }
-
-        .subject-list {
-            display: none;
-            margin-top: 25px;
-        }
-
-        .subject-item {
-            background: var(--glass);
-            margin-bottom: 12px;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .subject-info {
-            flex: 1;
-            min-width: 150px;
+        .subject-box:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-5px);
         }
 
         .subject-name {
-            font-weight: 600;
-            color: var(--accent-green);
-            display: block;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
         }
 
-        .teacher-contact {
-            font-size: 0.7rem;
-            opacity: 0.6;
-            font-style: italic;
+        .teacher-info {
+            font-size: 0.9rem;
+            margin: 12px 0 18px 0;
+            color: var(--text-dim);
+        }
+
+        .teacher-name {
+            color: var(--blue);
+            font-weight: 600;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 2px 10px;
+            border-radius: 8px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .btn-dl {
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .btn-send {
-            background: var(--accent-green);
-            color: black;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .btn-send.done {
-            background: var(--blue-glow) !important;
+            background: linear-gradient(135deg, #2980b9, #3498db);
             color: white;
         }
 
-        #congrats {
-            display: none;
-            background: rgba(74, 222, 128, 0.2);
-            color: var(--accent-green);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 15px;
-            border: 1px solid var(--accent-green);
+        .btn-wa {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .btn-disabled {
+            opacity: 0.15;
+            pointer-events: none;
+            filter: grayscale(1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 
 <body>
-    <a href="index.html" class="home-btn">
-        <i class="fas fa-home"></i>
-        <span>Rudi Nyumbani</span>
-    </a>
+
     <div class="container">
-        <header>
-            <h2 style="margin:0;">Embarway Assignment Hub</h2>
-            <p style="font-size: 0.8rem; opacity: 0.7;">Tuma kazi zako kwa walimu husika kwa haraka</p>
-        </header>
+        <span id="statusText">Inapakia mfumo...</span>
+        <div class="card">
+            <h2>Embarway Hub</h2>
+            <input type="text" id="stuName" placeholder="Andika Majina Yako Matatu">
 
-        <div class="info-card">
-            <label>Majina Yako Matatu</label>
-            <input type="text" id="stuName" placeholder="Mfano: Juma Shabaan Mwinyi">
-
-            <label>Chagua Kidato</label>
-            <select id="classSelect" onchange="toggleSections(); showSubjects();">
-                <option value="">-- Chagua Darasa --</option>
+            <select id="classSelect" onchange="handleClassChange()">
+                <option value="">-- Chagua Kidato --</option>
                 <option value="f1">Form One</option>
                 <option value="f2">Form Two</option>
                 <option value="f3">Form Three</option>
@@ -240,83 +221,37 @@
                 <option value="f6">Form Six</option>
             </select>
 
-            <div id="streamSection" style="display: none;">
-                <label>Chagua Mkondo</label>
-                <select id="streamSelect">
-                    <option value="">-- Chagua Mkondo --</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                    <option value="E">E</option>
-                </select>
-            </div>
+            <select id="streamSelect" style="display: none;" onchange="showSubjects()">
+            </select>
+        </div>
 
-            <div id="combiSection" style="display: none;">
-                <label>Chagua Combination</label>
-                <select id="combiSelect">
-                    <option value="">-- Chagua Combination --</option>
-                    <option value="HGL">HGL</option>
-                    <option value="HGK">HGK</option>
-                    <option value="HGE">HGE</option>
-                    <option value="HGLi">HGLi</option>
-                    <option value="CBG">CBG</option>
-                    <option value="HKL">HKL</option>
-                    <option value="HGFa">HGFa</option>
-                </select>
-            </div>
-
-            <div class="progress-section">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                    <span id="statusText">Maendeleo: 0%</span>
-                    <span id="counterText">0/0 Masomo</span>
-                </div>
-                <div class="bar-bg">
-                    <div id="progressBar">0%</div>
-                </div>
-                <div id="congrats">🎉 HONGERA! KAZI ZOTE ZIMETUMWA! 🎉</div>
+        <div id="photoReminder" class="reminder-box">
+            <div class="reminder-text">
+                <i class="fas fa-lightbulb"></i>
+                <strong>ZINGATIA:</strong> Wakati wa kutuma, hakikisha unapiga picha ya majibu yako kwenye
+                <strong>mwanga mzuri</strong> ili mwalimu aweze kusahihisha kwa urahisi.
             </div>
         </div>
 
-        <div id="subjectDisplay" class="subject-list">
-            <h3 id="classTitle"
-                style="font-size: 1rem; border-left: 4px solid var(--accent-green); padding-left: 10px;"></h3>
-            <div id="listItems"></div>
-        </div>
+        <div id="subjectList"></div>
     </div>
 
     <script>
-        // HAPA NDIPO UNAPOBADILISHA NAMBA ZA WALIMU KWA KILA SOMO
-        // Format ni "JINA LA SOMO": "Namba_ya_Simu"
-        const nambaZaWalimu = {
-            "PHYSICS": "255783243745",
-            "CHEMISTRY": "255783243745",
-            "BIOLOGY": "255783243745",
-            "BASIC MATHEMATICS": "255783243745",
-            "GEOGRAPHY": "255783243745",
-            "HISTORY": "255783243745",
-            "BUSINESS STUDIES": "255783243745",
-            "ENGLISH": "255783243745",
-            "KISWAHILI": "255783243745",
-            "BOOK KEEPING": "255783243745",
-            "COMPUTER SCIENCE": "255783243745",
-            "HISTORIA YA TANZANIA NA MAADILI": "255783243745",
-            "CIVICS": "255783243745",
-            "COMMERCE": "255783243745",
-            // Masomo ya A-Level
-            "History 1": "255783243745", "History 2": "255783243745",
-            "Geography 1": "255783243745", "Geography 2": "255783243745",
-            "Language 1": "255783243745", "Language 2": "255783243745",
-            "Kiswahili 1": "255783243745", "Kiswahili 2": "255783243745",
-            "Economics 1": "255783243745", "Economics 2": "255783243745",
-            "Literature in English 1": "255783243745", "Literature in English 2": "255783243745",
-            "Chemistry 1": "255783243745", "Chemistry 2": "255783243745",
-            "Biology 1": "255783243745", "Biology 2": "255783243745",
-            "Fasihi 1": "255783243745", "Fasihi 2": "255783243745",
-            "General Studies (GS)": "255783243745", "BAM": "255783243745"
-        };
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwDe8nvz7tnNOFYmWWZY-KGLHnHwtrC6VD51jguaMMcDfYZ3mGw2YKfTYc2B05zOyU/exec";
+        let teacherData = {};
 
-        const data = {
+        async function loadTeacherData() {
+            try {
+                const response = await fetch(SCRIPT_URL);
+                teacherData = await response.json();
+                document.getElementById('statusText').innerText = "● Mfumo upo tayari";
+            } catch (e) {
+                document.getElementById('statusText').innerText = "● Hitilafu ya muunganisho";
+            }
+        }
+        loadTeacherData();
+
+        const allSubjects = {
             f1: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "BUSINESS STUDIES", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMPUTER SCIENCE", "HISTORIA YA TANZANIA NA MAADILI"],
             f2: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "BUSINESS STUDIES", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMPUTER SCIENCE", "HISTORIA YA TANZANIA NA MAADILI"],
             f3: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "CIVICS", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMMERCE"],
@@ -325,125 +260,92 @@
             f6: ["History 1", "History 2", "Geography 1", "Geography 2", "Language 1", "Language 2", "Kiswahili 1", "Kiswahili 2", "Economics 1", "Economics 2", "Chemistry 1", "Chemistry 2", "Biology 1", "Biology 2", "General Studies (GS)", "BAM"]
         };
 
-        let completedSubjects = new Set();
-        let targetNeeded = 0;
-
-        function toggleSections() {
+        function handleClassChange() {
             const cls = document.getElementById('classSelect').value;
-            const streamDiv = document.getElementById('streamSection');
-            const combiDiv = document.getElementById('combiSection');
+            const streamSelect = document.getElementById('streamSelect');
+            const listDiv = document.getElementById('subjectList');
+            const reminder = document.getElementById('photoReminder');
 
-            if (cls === 'f5' || cls === 'f6') {
-                combiDiv.style.display = "block";
-                streamDiv.style.display = "none";
-            } else if (cls !== "") {
-                streamDiv.style.display = "block";
-                combiDiv.style.display = "none";
+            listDiv.innerHTML = "";
+            reminder.style.display = "none";
+
+            if (!cls) {
+                streamSelect.style.display = "none";
+                return;
+            }
+
+            streamSelect.style.display = "block";
+            streamSelect.innerHTML = `<option value="">-- Chagua ${cls.includes('5') || cls.includes('6') ? 'Mchepuo (Combination)' : 'Mkondo (Stream)'} --</option>`;
+
+            if (cls.startsWith('f') && parseInt(cls[1]) <= 4) {
+                // O-Level Streams
+                ['A', 'B', 'C', 'D', 'E', 'F'].forEach(s => {
+                    streamSelect.innerHTML += `<option value="${s}">${s}</option>`;
+                });
             } else {
-                streamDiv.style.display = "none";
-                combiDiv.style.display = "none";
+                // A-Level Combinations
+                ['HGL', 'HGK', 'HGE', 'HGLi', 'HGFa','HGE', 'HKL'].forEach(c => {
+                    streamSelect.innerHTML += `<option value="${c}">${c}</option>`;
+                });
             }
         }
 
         function showSubjects() {
             const cls = document.getElementById('classSelect').value;
+            const strm = document.getElementById('streamSelect').value;
+            const listDiv = document.getElementById('subjectList');
+            const reminder = document.getElementById('photoReminder');
             const name = document.getElementById('stuName').value;
-            const display = document.getElementById('subjectDisplay');
-            const listItems = document.getElementById('listItems');
-            const classTitle = document.getElementById('classTitle');
 
-            if (cls && (!name || name.trim().split(" ").length < 3)) {
-                alert("Tafadhali andika majina yako matatu kwanza!");
-                document.getElementById('classSelect').value = "";
+            if (strm && (!name || name.trim().split(" ").length < 2)) {
+                alert("Tafadhali anza kwa kuandika majina yako matatu!");
+                document.getElementById('streamSelect').value = "";
                 return;
             }
 
-            if (cls) {
-                display.style.display = "block";
-                listItems.innerHTML = "";
-                completedSubjects.clear();
-                const selectedText = document.getElementById('classSelect').options[document.getElementById('classSelect').selectedIndex].text;
-                classTitle.innerText = "Masomo - " + selectedText;
-
-                targetNeeded = (cls === 'f5' || cls === 'f6') ? 6 : 7;
-                updateProgress();
-
-                data[cls].forEach((sub, index) => {
-                    const teacherPhone = nambaZaWalimu[sub] || "255783243745";
-                    listItems.innerHTML += `
-                        <div class="subject-item">
-                            <div class="subject-info">
-                                <span class="subject-name">${sub}</span>
-                                <span class="teacher-contact">Tuma kwa: ${teacherPhone}</span>
-                            </div>
-                            <div class="action-btns" style="display:flex; gap:10px;">
-                                <a href="#" class="btn-dl">⬇ Pakua</a>
-                                <button class="btn-send" id="btn-${index}" onclick="tumaKazi('${sub}', ${index})">Tuma</button>
-                            </div>
-                        </div>`;
-                });
-            } else {
-                display.style.display = "none";
+            listDiv.innerHTML = "";
+            if (!strm) {
+                reminder.style.display = "none";
+                return;
             }
+
+            reminder.style.display = "block";
+
+            allSubjects[cls].forEach(sub => {
+                const searchId = cls.toLowerCase() + sub.toUpperCase();
+                const info = teacherData[searchId] || null;
+
+                const mwalimuYupo = info !== null;
+                const jinaMwalimu = mwalimuYupo ? info.name : "Bado hajatuma";
+                const nambaSimu = mwalimuYupo ? info.phone : "";
+                const linkKazi = mwalimuYupo ? info.link : "";
+
+                listDiv.innerHTML += `
+                <div class="subject-box">
+                    <span class="subject-name"><i class="fas fa-book-open"></i> ${sub}</span>
+                    <div class="teacher-info">
+                        <i class="fas fa-user-tie"></i> Mwalimu: <span class="teacher-name">${jinaMwalimu}</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="${linkKazi}" class="btn btn-dl ${!linkKazi ? 'btn-disabled' : ''}" target="_blank">
+                            <i class="fas fa-cloud-download-alt"></i> Pakua
+                        </a>
+                        <button class="btn btn-wa ${!mwalimuYupo ? 'btn-disabled' : ''}" 
+                                onclick="${mwalimuYupo ? `tumaWhatsApp('${sub}', '${nambaSimu}', '${cls}', '${strm}')` : ''}">
+                            <i class="fab fa-whatsapp"></i> Tuma
+                        </button>
+                    </div>
+                </div>`;
+            });
         }
 
-        function tumaKazi(sub, index) {
-            const btn = document.getElementById(`btn-${index}`);
+        function tumaWhatsApp(sub, phone, cls, strm) {
             const name = document.getElementById('stuName').value;
-            const clsSelect = document.getElementById('classSelect');
-            const className = clsSelect.options[clsSelect.selectedIndex].text;
+            const label = cls.includes('5') || cls.includes('6') ? 'Mchepuo' : 'Mkondo';
+            const kidato = cls.replace('f', 'Form ');
 
-            const stream = document.getElementById('streamSelect').value;
-            const combi = document.getElementById('combiSelect').value;
-
-            // Pata namba husika ya somo hili
-            const phone = nambaZaWalimu[sub] || "255783243745";
-
-            let extraInfo = "";
-            if (combi) extraInfo = `*Combination:* ${combi}`;
-            else if (stream) extraInfo = `*Mkondo:* ${stream}`;
-
-            const text = `*KAZI YA LIKIZO - EMBARWAY*%0A` +
-                `--------------------------%0A` +
-                `*Mwanafunzi:* ${name}%0A` +
-                `*Kidato:* ${className}%0A` +
-                `${extraInfo}%0A` +
-                `*Somo:* ${sub}%0A` +
-                `--------------------------%0A` +
-                `Mwalimu, nimeambatanisha picha za kazi yangu hapa chini:`;
-
-            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-
-            if (!completedSubjects.has(sub)) {
-                completedSubjects.add(sub);
-                btn.classList.add('done');
-                btn.innerText = "✓ Tayari";
-                btn.disabled = true;
-                updateProgress();
-            }
-        }
-
-        function updateProgress() {
-            const bar = document.getElementById('progressBar');
-            const statusText = document.getElementById('statusText');
-            const counterText = document.getElementById('counterText');
-            const congrats = document.getElementById('congrats');
-
-            let percent = Math.round((completedSubjects.size / targetNeeded) * 100);
-            if (percent > 100) percent = 100;
-
-            bar.style.width = percent + "%";
-            bar.innerText = percent + "%";
-            statusText.innerText = `Maendeleo: ${percent}%`;
-            counterText.innerText = `${completedSubjects.size}/${targetNeeded} Masomo muhimu`;
-
-            if (percent >= 100) {
-                bar.style.background = "var(--blue-glow)";
-                congrats.style.display = "block";
-            } else {
-                bar.style.background = "var(--red-glow)";
-                congrats.style.display = "none";
-            }
+            const msg = `*KAZI YA LIKIZO - EMBARWAY*%0A--------------------------%0A*Mwanafunzi:* ${name}%0A*Darasa:* ${kidato}%0A*${label}:* ${strm}%0A*Somo:* ${sub}%0A--------------------------%0AMwalimu, nimeambatanisha picha za kazi yangu hapa chini:`;
+            window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
         }
     </script>
 </body>
